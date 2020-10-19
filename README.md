@@ -28,7 +28,7 @@
 | comment             | text          | null: false                    |
 | category_id         | integer       | null: false                    |
 | condition_id        | integer       | null: false                    |
-| image               | ActiveStorage |                                |
+| item_name           | text          | null: false                    |
 | charge_id           | integer       | null: false                    |
 | area_id             | integer       | null: false                    |
 | delivery_date_id    | integer       | null: false                    |
