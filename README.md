@@ -12,8 +12,6 @@
 | last_name       | string | null: false |
 | first_name_kana | string | null: false |
 | last_name_kana  | string | null: false |
-| birth_year      | date   | null: false |
-| birth_month     | date   | null: false |
 | birth_date      | date   | null: false |
 
 
@@ -25,23 +23,24 @@
 
 ## items テーブル
 
-| Column        | Type          | Options                        |
-| -----------   | ------------- | ------------------------------ |
-| comment       | text          | null: false                    |
-| category      | integer       | null: false                    |
-| condition     | integer       | null: false                    |
-| image         | ActiveStorage |                                |
-| charge        | integer       | null: false                    |
-| area          | integer       | null: false                    |
-| delivery_date | integer       | null: false                    |
-| price         | integer       | null: false                    |
-| user          | references    | foreign_key: true              |
+| Column              | Type          | Options                        |
+| ------------------- | ------------- | ------------------------------ |
+| comment             | text          | null: false                    |
+| category_id         | integer       | null: false                    |
+| condition_id        | integer       | null: false                    |
+| image               | ActiveStorage |                                |
+| charge_id           | integer       | null: false                    |
+| area_id             | integer       | null: false                    |
+| delivery_date_id    | integer       | null: false                    |
+| price               | integer       | null: false                    |
+| user                | references    | foreign_key: true              |
 
 
 
 ### Association
 - belongs_to :user
-- has_many :purchases
+- has_one :purchase
+
 
 
 ## purchases テーブル
@@ -55,22 +54,23 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
 # address テーブル
 
-| Column        | Type          | Options                        |
-| -----------   | ------------- | ------------------------------ |
-| post_code     | integer       | null: false                    |
-| prefectures   | integer       | null: false                    |
-| city          | string        | null: false                    |
-| house_num     | string        | null: false                    |
-| building_name | string        |                                |
-| phone_num     | string        | null: false                    |
-| purchase      | references    | null: false, foreign_key: true |
+| Column           | Type          | Options                        |
+| ---------------- | ------------- | ------------------------------ |
+| post_code        | integer       | null: false                    |
+| prefecture_id    | integer       | null: false                    |
+| city             | string        | null: false                    |
+| house_num        | string        | null: false                    |
+| building_name    | string        |                                |
+| phone_num        | string        | null: false                    |
+| purchase         | references    | null: false, foreign_key: true |
 
 
 
 ### Association
 
-- has_one :purchase
+- belongs_to :purchase
