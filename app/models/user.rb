@@ -17,7 +17,7 @@ class User < ApplicationRecord
     validates :last_name_kana
   end
 
-  validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }
+  validates :email, uniqueness: true, format: { with: /\A\S+@\S+\.\S+\z/ }
 
   validates :password, confirmation: true, length: { minimum: 6 }, format: { with: /\A[a-zA-Z0-9]+\z/ }
 end
