@@ -1,14 +1,17 @@
 class Item < ApplicationRecord
   with_options presence: true do
     validates :comment
-    validates :category_id, numericality: { greater_than: 1 }
-    validates :condition_id, numericality: { greater_than: 1 }
     validates :name
-    validates :charge_id, numericality: { greater_than: 1 }
-    validates :area_id, numericality: { greater_than: 1 }
-    validates :delivery_date_id, numericality: { greater_than: 1 }
     validates :price, format: { with: /\A[0-9]+\z/ }, numericality: { greater_than: 300, less_than_or_equal_to: 9_999_999 }
     validates :image
+  end
+
+  with_options presence: true,  numericality: { greater_than: 1 } do
+    validates :category_id
+    validates :condition_id
+    validates :area_id
+    validates :delivery_date_id
+    validates :charge_id
   end
 
   belongs_to :user
