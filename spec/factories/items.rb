@@ -4,9 +4,9 @@ FactoryBot.define do
     category_id                      { '2' }
     condition_id                     { '2' }
     name                             { 'テスト' }
-    charge_id                        { '1' }
-    area_id                          { '1' }
-    delivery_date_id                 { '1' }
+    charge_id                        { '2' }
+    area_id                          { '2' }
+    delivery_date_id                 { '2' }
     price                            { '3000' }
     association :user
   end

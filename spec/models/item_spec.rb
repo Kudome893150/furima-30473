@@ -34,23 +34,42 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
+      it 'category_idが1では登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category must be greater than 1')
+      end
 
       it 'condition_idが空では登録できない' do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
-
+      it 'condition_idが1では登録できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Condition must be greater than 1')
+      end
       it 'charge_idが空では登録できない' do
         @item.charge_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Charge can't be blank")
       end
-
+      it 'charge_idが1では登録できない' do
+        @item.charge_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Charge must be greater than 1')
+      end
       it 'area_idが空では登録できない' do
         @item.area_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
+      end
+
+      it 'area_idが1では登録できない' do
+        @item.area_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Area must be greater than 1')
       end
 
       it 'priceが空では登録できない' do
