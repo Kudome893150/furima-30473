@@ -6,7 +6,7 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  with_options presence: true,  numericality: { greater_than: 1 } do
+  with_options presence: true, numericality: { greater_than: 1 } do
     validates :category_id
     validates :condition_id
     validates :area_id
