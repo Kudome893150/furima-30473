@@ -1,6 +1,6 @@
 window.addEventListener('load', function(){
   const price = document.getElementById("item-price")
-  price.addEventListener("input", function(){
+  price.addEventListener("keyup", function(){
     
       let amount = price.value;
       let add_tax = Math.ceil(amount * 0.1);
