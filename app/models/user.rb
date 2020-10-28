@@ -23,4 +23,5 @@ class User < ApplicationRecord
   validates :password, confirmation: true, length: { minimum: 6 }, format: { with: /\A[a-zA-Z0-9]+\z/ }
 
   has_many :items
+  has_many :purchases
 end
