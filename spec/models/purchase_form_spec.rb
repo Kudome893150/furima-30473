@@ -32,6 +32,11 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Post code is invalid')
       end
+      it '郵便番号にハイフンがないと購入できない' do
+        @purchase_form.post_code = '111000000'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include('Post code is invalid')
+      end
       it 'cityが空だと登録できない' do
         @purchase_form.city = nil
         @purchase_form.valid?
@@ -56,6 +61,12 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.phone_num = '090-7415-0967'
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phone num is invalid')
+      end
+      it 'phone_numが11桁より多いと購入できない' do
+        @purchase_form.phone_num = '090111111111'
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Phone num is too long (maximum is 11 characters)")
+
       end
     end
   end

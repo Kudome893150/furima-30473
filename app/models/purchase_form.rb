@@ -7,7 +7,7 @@ class PurchaseForm
     validates :post_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
     validates :city
     validates :house_num
-    validates :phone_num, format: { with: /\d{11}/ }
+    validates :phone_num, format: { with: /\d{11}/ }, length: { maximum: 11 } 
   end
   validates :prefecture_id, numericality: { other_than: 0 }
 
