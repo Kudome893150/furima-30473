@@ -25,12 +25,12 @@ RSpec.describe PurchaseForm, type: :model do
       it '郵便番号が空だと購入できない' do
         @purchase_form.post_code = nil
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Post code can't be blank", "Post code is invalid")
+        expect(@purchase_form.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
       end
       it '郵便番号の桁数が違うと購入できない' do
-        @purchase_form.post_code = "111-000000"
+        @purchase_form.post_code = '111-000000'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Post code is invalid")
+        expect(@purchase_form.errors.full_messages).to include('Post code is invalid')
       end
       it 'cityが空だと登録できない' do
         @purchase_form.city = nil
@@ -45,19 +45,18 @@ RSpec.describe PurchaseForm, type: :model do
       it 'prefecture_idが"--"だと購入できない' do
         @purchase_form.prefecture_id = 0
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Prefecture must be other than 0")
+        expect(@purchase_form.errors.full_messages).to include('Prefecture must be other than 0')
       end
       it 'phone_numが空だと購入できない' do
         @purchase_form.phone_num = nil
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone num can't be blank", "Phone num is invalid")
+        expect(@purchase_form.errors.full_messages).to include("Phone num can't be blank", 'Phone num is invalid')
       end
       it 'phone_numにハイフンが含まれていると購入できない' do
-        @purchase_form.phone_num = "090-7415-0967"
+        @purchase_form.phone_num = '090-7415-0967'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone num is invalid")
+        expect(@purchase_form.errors.full_messages).to include('Phone num is invalid')
       end
     end
-    
   end
 end
